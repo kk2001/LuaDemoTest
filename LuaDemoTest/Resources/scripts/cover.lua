@@ -1,5 +1,6 @@
 
 require "scripts/utils"
+require "scripts/game"
 
 local function onTouchBegan( x,y )
 	-- body
@@ -42,6 +43,12 @@ local function togamebutton()
 
 	cclog( "to game button")
 
+	local scene = create_game_scene();
+
+	CCDirector:sharedDirector():replaceScene( CCTransitionFade:create(0.5, scene ))
+
+	-- CCDirector:sharedDirector():purgeCachedData();
+
 
 end
 
@@ -65,6 +72,7 @@ local function create_menu()
 
 	local startgamelabel = CCMenuItemImage:create("CloseNormal.png","CloseSelected.png")
 	startgamelabel:setPosition( wsize.width / 2 ,wsize.height / 2 )
+	startgamelabel:registerScriptTapHandler( togamebutton )
 
 	local menu = CCMenu:createWithItem( startgamelabel )
 	menu:setPosition(0,0)
