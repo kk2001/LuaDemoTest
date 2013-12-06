@@ -19,6 +19,9 @@ end
 
 function main()
 
+	collectgarbage("setpause", 100)
+    collectgarbage("setstepmul", 5000)
+
 	CCLuaLog( "Enter Controller")
 
 	CCDirector:sharedDirector():runWithScene( creatcoverscene() )

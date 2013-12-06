@@ -69,13 +69,27 @@ local function create_menu()
 
 	local menulayer =  CCLayer:create()
 
+	CCTextureCache:sharedTextureCache():addImage("res/menu.png")
 
-	local startgamelabel = CCMenuItemImage:create("CloseNormal.png","CloseSelected.png")
-	startgamelabel:setPosition( wsize.width / 2 ,wsize.height / 2 )
+	local frame1 = CCSpriteFrame:create("res/menu.png", CCRectMake(  0,0 , 126 , 33 ))
+	local frame2 = CCSpriteFrame:create("res/menu.png", CCRectMake(  0,33 , 126 , 33 ))
+
+	local startNormal = CCSprite:createWithSpriteFrame( frame1 )
+	local startSelected = CCSprite:createWithSpriteFrame( frame2 )
+
+
+	local startgamelabel = CCMenuItemSprite:create( startNormal, startSelected ) 
+	-- startgamelabel:setPosition( wsize.width / 2 ,wsize.height / 2 )
 	startgamelabel:registerScriptTapHandler( togamebutton )
 
-	local menu = CCMenu:createWithItem( startgamelabel )
-	menu:setPosition(0,0)
+	local textlabel = CCMenuItemFont:create("ok")
+	-- local menu = CCMenu:createWithItem( startgamelabel )
+	local menuArray = CCArray:create()
+	menuArray:addObject( startgamelabel )
+	menuArray:addObject( textlabel )
+	local menu = CCMenu:createWithArray( menuArray )
+	menu:alignItemsVerticallyWithPadding( 10)
+	-- menu:setPosition(0,0)
 
 	menulayer:addChild( menu )
 

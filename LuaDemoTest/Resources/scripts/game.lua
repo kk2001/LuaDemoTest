@@ -23,7 +23,7 @@ end
 
 function create_game_scene()
 
-	SimpleAudioEngine:sharedEngine():playBackgroundMusic("background.mp3", true  )
+	-- SimpleAudioEngine:sharedEngine():playBackgroundMusic("background.mp3", true  )
 
 	local scene = CCScene:create();
 	scene:addChild( create_bg_layer() )
